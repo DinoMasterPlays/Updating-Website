@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Typo's Website</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      pre {
+        background-color: #eee;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Typo's Website</h1>
+    <pre id="fileContent"></pre>
+    <script>
+      const fileContentElement = document.getElementById("fileContent");
+
+      const refreshFile = () => {
+        fetch("content.txt")
+          .then((response) => response.text())
+          .then((fileContent) => {
+            fileContentElement.innerText = fileContent;
+          });
+      };
+
+      setInterval(refreshFile, 1000);
+    </script>
+  </body>
+</html>
